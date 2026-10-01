@@ -1,0 +1,92 @@
+{
+  "case": {
+    "id": "adv-02",
+    "category": "adversarial",
+    "description": "Nonsense phone",
+    "turns": [
+      "Book me for Friday",
+      "6pm",
+      "Name John Doe, phone 1"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "valid 10-digit phone"
+      ],
+      "language": "en",
+      "final_action": "ask_valid_phone"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Book me for Friday",
+      "assistant": "Sure, we have the following slots on Friday:\n\n- Friday 9:00 am  \n- Friday 9:30 am  \n- Friday 12:30 pm  \n\nWhich one works for you?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "any"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T07:00:00.000Z",
+                "human": "Fri, 5 Sept, 12:30 pm"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "user": "6pm",
+      "assistant": "We have a slot at **Friday 6:00 pm**. May I have your full name and 10‑digit phone number, please?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "evening"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T12:30:00.000Z",
+                "human": "Fri, 5 Sept, 6:00 pm"
+              },
+              {
+                "slotISO": "2026-09-05T13:30:00.000Z",
+                "human": "Fri, 5 Sept, 7:00 pm"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "user": "Name John Doe, phone 1",
+      "assistant": "Could you please provide a valid 10‑digit phone number?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [
+    "check_availability",
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

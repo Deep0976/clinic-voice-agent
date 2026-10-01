@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "confirm-02",
+    "category": "confirmation",
+    "description": "Phone with country code",
+    "turns": [
+      "I want to book",
+      "Friday morning",
+      "Name is Rahul, number is plus nine one nine eight seven six five four three two one zero"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_confirm": [
+        "phone repeated in groups"
+      ],
+      "language": "en",
+      "final_action": "book_or_clarify"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7649, Requested 724. Please try again in 2.7975s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

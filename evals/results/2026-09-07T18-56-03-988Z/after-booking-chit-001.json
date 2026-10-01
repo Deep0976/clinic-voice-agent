@@ -1,0 +1,19 @@
+{
+  "case": {
+    "id": "after-booking-chit-001",
+    "category": "after-booking-chit",
+    "description": "Caller continues small talk after booking confirmation",
+    "turns": [
+      "Doctor kaun hai?",
+      "Um, unki reputation ke baare mein batao na?",
+      "Fees kitni hoti hai, yaar?"
+    ],
+    "expect": {
+      "must_call": [],
+      "must_ask_for": [],
+      "language": "hinglish",
+      "final_action": "end_call"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199415, Requested 2798. Please try again in 15m56.016s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

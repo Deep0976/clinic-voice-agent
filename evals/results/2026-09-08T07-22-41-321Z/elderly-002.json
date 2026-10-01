@@ -1,0 +1,76 @@
+{
+  "case": {
+    "id": "elderly-002",
+    "category": "elderly",
+    "description": "Elderly repeats himself, needs patient handling",
+    "turns": [
+      "Hello beta, kya main doctor se appointment le sakta hoon?",
+      "Chest mein thoda pain hai lekin bahut serious nahi, bas thoda... kya bataun",
+      "Haan haan appointment book kar do koi bhi time chalega"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Hello beta, kya main doctor se appointment le sakta hoon?",
+      "assistant": "Sure, kya problem hai?",
+      "tool_calls": []
+    },
+    {
+      "user": "Chest mein thoda pain hai lekin bahut serious nahi, bas thoda... kya bataun",
+      "assistant": "Friday 5 September, 9 am, ya 9:30 am, ya 12:30 pm — aapko kaunsa theek rahega?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "any",
+            "urgency": "urgent"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T07:00:00.000Z",
+                "human": "Fri, 5 Sept, 12:30 pm"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "user": "Haan haan appointment book kar do koi bhi time chalega",
+      "assistant": "The first slot, Friday 5 September at 9 am, will be set. Aapka naam kya hai?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [
+      "book_appointment"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

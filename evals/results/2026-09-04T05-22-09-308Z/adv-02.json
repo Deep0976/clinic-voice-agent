@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "adv-02",
+    "category": "adversarial",
+    "description": "Nonsense phone",
+    "turns": [
+      "Book me for Friday",
+      "6pm",
+      "Name John Doe, phone 1"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "valid 10-digit phone"
+      ],
+      "language": "en",
+      "final_action": "ask_valid_phone"
+    }
+  },
+  "error": "Error: openai 404: {\"error\":{\"message\":\"The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}"
+}

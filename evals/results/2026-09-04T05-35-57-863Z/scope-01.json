@@ -1,0 +1,33 @@
+{
+  "case": {
+    "id": "scope-01",
+    "category": "out_of_scope",
+    "description": "Refund request",
+    "turns": [
+      "I want a refund for last week's consultation, doctor was late"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_mention": [
+        "callback"
+      ],
+      "language": "en",
+      "final_action": "escalate"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I want a refund for last week's consultation, doctor was late",
+      "assistant": "I’m sorry to hear that. Could you please share your 10‑digit phone number so a staff member can call you back regarding the refund?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "case": {
+    "id": "hinglish-01",
+    "category": "hinglish",
+    "description": "Full Hinglish booking",
+    "turns": [
+      "Bhaiya, kal shaam ka appointment chahiye Doctor ke saath"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Bhaiya, kal shaam ka appointment chahiye Doctor ke saath",
+      "assistant": "Mujhe maaf kijiye, kal ke liye koi slot available nahi hai. Yeh sabse najdeek ke evening slots hain: **Friday 5 Sept, 6 pm** ya **Friday 5 Sept, 7 pm**. Aap inmein se koi pasand karenge?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "evening"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T12:30:00.000Z",
+                "human": "Fri, 5 Sept, 6:00 pm"
+              },
+              {
+                "slotISO": "2026-09-05T13:30:00.000Z",
+                "human": "Fri, 5 Sept, 7:00 pm"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

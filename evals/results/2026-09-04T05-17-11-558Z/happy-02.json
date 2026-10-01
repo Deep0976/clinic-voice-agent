@@ -1,0 +1,21 @@
+{
+  "case": {
+    "id": "happy-02",
+    "category": "happy_path",
+    "description": "Book for family member",
+    "turns": [
+      "I want to book for my father, name is Ramesh Kumar, tomorrow morning if possible"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_ask_for": [
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

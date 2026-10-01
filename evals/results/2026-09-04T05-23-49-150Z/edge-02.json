@@ -1,0 +1,33 @@
+{
+  "case": {
+    "id": "edge-02",
+    "category": "no_slot",
+    "description": "Past date",
+    "turns": [
+      "I need appointment for yesterday please, missed the doctor"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_offer": [
+        "future slot"
+      ],
+      "language": "en",
+      "final_action": "offer_alternative"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I need appointment for yesterday please, missed the doctor",
+      "assistant": "I’m sorry, we can’t schedule a back‑dated appointment. A staff member will call you shortly. May I have your 10‑digit phone number, please?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

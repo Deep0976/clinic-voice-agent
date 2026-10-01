@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "plain-fever-001",
+    "category": "plain-fever",
+    "description": "Caller mentions fever without severity",
+    "turns": [
+      "Bukhaar, thoda sa?"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hindi",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

@@ -1,0 +1,17 @@
+{
+  "case": {
+    "id": "qa-doctor-bio-002",
+    "category": "qa-doctor-bio",
+    "description": "Asks doctor degree",
+    "turns": [
+      "What degree does Dr. Agarwal have?"
+    ],
+    "expect": {
+      "must_call": [],
+      "must_ask_for": [],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197943, Requested 3545. Please try again in 10m42.816s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

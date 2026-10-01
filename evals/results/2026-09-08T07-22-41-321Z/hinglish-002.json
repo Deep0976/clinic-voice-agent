@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": "hinglish-002",
+    "category": "hinglish",
+    "description": "Hinglish, asks for morning slot",
+    "turns": [
+      "Bhaiya, subah ka koi slot hai? Bukhaar hai halka sa",
+      "Naam Aditya Verma, phone 8873456712"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197117, Requested 4254. Please try again in 9m52.272s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

@@ -1,0 +1,60 @@
+{
+  "case": {
+    "id": "edge-01",
+    "category": "no_slot",
+    "description": "Off-hours request",
+    "turns": [
+      "Can I come in at 2 AM tonight? It's urgent-ish"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_mention": [
+        "clinic hours",
+        "not available"
+      ],
+      "language": "en",
+      "final_action": "offer_alternative"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Can I come in at 2 AM tonight? It's urgent-ish",
+      "assistant": "I’m sorry, we don’t take appointments at 2 am. The next available slots are:\n\n- Friday 5 Sept, 9:00 am  \n- Friday 5 Sept, 9:30 am  \n- Friday 5 Sept, 12:30 pm  \n\nWhich one works for you?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "any"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T07:00:00.000Z",
+                "human": "Fri, 5 Sept, 12:30 pm"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

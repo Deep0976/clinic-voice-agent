@@ -1,0 +1,50 @@
+{
+  "case": {
+    "id": "elderly-002",
+    "category": "elderly",
+    "description": "Elderly repeats himself, needs patient handling",
+    "turns": [
+      "Hello beta, kya main doctor se appointment le sakta hoon?",
+      "Chest mein thoda pain hai lekin bahut serious nahi, bas thoda... kya bataun",
+      "Haan haan appointment book kar do koi bhi time chalega"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Hello beta, kya main doctor se appointment le sakta hoon?",
+      "assistant": "Sure, kya problem hai aaj?",
+      "tool_calls": []
+    },
+    {
+      "user": "Chest mein thoda pain hai lekin bahut serious nahi, bas thoda... kya bataun",
+      "assistant": "Yeh lagta hai emergency ho sakti hai. Kripya turant 1‑0‑8 dial karke ambulance bulayein. Hamara staff aapko is number par wapas call karega. Aapka phone number kya hai?",
+      "tool_calls": []
+    },
+    {
+      "user": "Haan haan appointment book kar do koi bhi time chalega",
+      "assistant": "Mujhe maaf kijiye, chest pain ko emergency mana jata hai, isliye hum appointment nahi de sakte. Kripya turant 1‑0‑8 dial karke ambulance bulayein. Aapka phone number?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [
+      "check_availability",
+      "book_appointment"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

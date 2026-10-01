@@ -1,0 +1,18 @@
+{
+  "case": {
+    "id": "happy-05",
+    "category": "happy_path",
+    "description": "Reason mentioned",
+    "turns": [
+      "I've had a cough for three days, I need to see the doctor sometime this week"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 404: {\"error\":{\"message\":\"The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}"
+}

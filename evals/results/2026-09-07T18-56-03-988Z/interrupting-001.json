@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": "interrupting-001",
+    "category": "interrupting",
+    "description": "Caller talks over AI mid-sentence, interrupting to give info",
+    "turns": [
+      "Namaste, main Dr. Deep ke clinic mein appointment book karna chahta hoon, kal subah 10 baje",
+      "Ruko, wait wait, phone number pehle do, meri phone number 9876543210 hai",
+      "Nahi, pehle mera naam, main Rajesh Kumar bol raha hoon"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198589, Requested 2763. Please try again in 9m44.064s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

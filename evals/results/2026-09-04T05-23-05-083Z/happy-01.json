@@ -1,0 +1,59 @@
+{
+  "case": {
+    "id": "happy-01",
+    "category": "happy_path",
+    "description": "Simple evening booking",
+    "turns": [
+      "I want to book an appointment for tomorrow evening"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I want to book an appointment for tomorrow evening",
+      "assistant": "Good morning! I have a few slots for tomorrow evening. How does **6:00 pm** sound, or would you prefer another time?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T12:30:00.000Z",
+                "human": "Fri, 5 Sept, 6:00 pm"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

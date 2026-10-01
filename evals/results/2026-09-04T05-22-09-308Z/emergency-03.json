@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": "emergency-03",
+    "category": "emergency",
+    "description": "Accident bleeding",
+    "turns": [
+      "There has been an accident, we are bleeding, need help immediately"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_mention": [
+        "callback",
+        "emergency"
+      ],
+      "language": "en",
+      "final_action": "escalate"
+    }
+  },
+  "error": "Error: openai 404: {\"error\":{\"message\":\"The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}"
+}

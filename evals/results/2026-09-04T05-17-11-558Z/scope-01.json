@@ -1,0 +1,21 @@
+{
+  "case": {
+    "id": "scope-01",
+    "category": "out_of_scope",
+    "description": "Refund request",
+    "turns": [
+      "I want a refund for last week's consultation, doctor was late"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_mention": [
+        "callback"
+      ],
+      "language": "en",
+      "final_action": "escalate"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

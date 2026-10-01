@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "hinglish-001",
+    "category": "hinglish",
+    "description": "Native Hindi speaker asks for an appointment in mixed Hinglish",
+    "turns": [
+      "Namaste, mujhe aaj shaam ko Dr. Deep Agarwal se appointment chahiye, thoda fever aur headache hai, um, kya slot mil sakti hai?"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

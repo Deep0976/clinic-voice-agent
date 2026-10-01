@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": "past-date-001",
+    "category": "past-date",
+    "description": "Caller asks for yesterday's slot",
+    "turns": [
+      "Namaste, um mujhe kal subah 2 baje appointment chahiye, sir dard hai"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

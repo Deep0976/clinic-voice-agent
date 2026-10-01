@@ -1,0 +1,17 @@
+{
+  "case": {
+    "id": "qa-timings-002",
+    "category": "qa-timings",
+    "description": "Asks close time",
+    "turns": [
+      "Kab tak open rehta hai clinic?"
+    ],
+    "expect": {
+      "must_call": [],
+      "must_ask_for": [],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197052, Requested 3517. Please try again in 4m5.808s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

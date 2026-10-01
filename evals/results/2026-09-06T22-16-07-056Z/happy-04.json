@@ -1,0 +1,32 @@
+{
+  "case": {
+    "id": "happy-04",
+    "category": "happy_path",
+    "description": "Specific day request",
+    "turns": [
+      "Something on Saturday please, morning slot"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Something on Saturday please, morning slot",
+      "assistant": "Sure, may I know what's bringing you in?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [
+      "check_availability"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

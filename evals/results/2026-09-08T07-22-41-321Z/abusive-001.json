@@ -1,0 +1,19 @@
+{
+  "case": {
+    "id": "abusive-001",
+    "category": "abusive",
+    "description": "3-strike escalation with abuse",
+    "turns": [
+      "Tu bekaar AI hai, kaam ka nahi",
+      "Chal joke suna",
+      "Band kar tu"
+    ],
+    "expect": {
+      "must_call": [],
+      "must_ask_for": [],
+      "language": "hinglish",
+      "final_action": "end_call"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197883, Requested 3544. Please try again in 10m16.464s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

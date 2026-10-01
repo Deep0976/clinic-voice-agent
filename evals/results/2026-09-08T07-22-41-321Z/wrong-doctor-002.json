@@ -1,0 +1,17 @@
+{
+  "case": {
+    "id": "wrong-doctor-002",
+    "category": "wrong-doctor",
+    "description": "Wants specialist",
+    "turns": [
+      "Skin doctor se appointment karani hai"
+    ],
+    "expect": {
+      "must_call": [],
+      "must_ask_for": [],
+      "language": "hinglish",
+      "final_action": "refuse"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 196994, Requested 3562. Please try again in 4m0.191999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

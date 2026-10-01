@@ -1,0 +1,56 @@
+{
+  "case": {
+    "id": "happy-03",
+    "category": "happy_path",
+    "description": "Earliest possible",
+    "turns": [
+      "Kitna jaldi ho sakta hai appointment?"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Kitna jaldi ho sakta hai appointment?",
+      "assistant": "Ji, sabse jaldi slot yeh hain: **Friday 5 September, 9:00 am** ya **9:30 am** ya **12:30 pm**. Aap kaunsa lena chaheinge?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "any"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T07:00:00.000Z",
+                "human": "Fri, 5 Sept, 12:30 pm"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

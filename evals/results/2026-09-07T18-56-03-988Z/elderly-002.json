@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "elderly-002",
+    "category": "elderly",
+    "description": "Elderly mother with back pain, speaking slowly and repeating",
+    "turns": [
+      "Namaste, main... um... meri maa, 65 saal ki, unko kamar dard hai, kal subah ka samay chahiye",
+      "Haan, maine kal subah bola tha, please confirm"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hindi",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199266, Requested 2856. Please try again in 15m16.704s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

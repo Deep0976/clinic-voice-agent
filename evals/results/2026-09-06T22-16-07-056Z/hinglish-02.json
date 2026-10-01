@@ -1,0 +1,32 @@
+{
+  "case": {
+    "id": "hinglish-02",
+    "category": "hinglish",
+    "description": "Mixed Hindi-English",
+    "turns": [
+      "Doctor ka time available hai this Friday?"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Doctor ka time available hai this Friday?",
+      "assistant": "Aapko kis wajah se aana hai?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [
+      "check_availability"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

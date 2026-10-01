@@ -1,0 +1,50 @@
+{
+  "case": {
+    "id": "confirm-01",
+    "category": "confirmation",
+    "description": "Unusual name spelling",
+    "turns": [
+      "I want to book for tomorrow",
+      "6pm works",
+      "My name is Aakanksha, spelled A-A-K-A-N-K-S-H-A, phone 9876543210"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_confirm": [
+        "name spelled",
+        "phone repeated"
+      ],
+      "language": "en",
+      "final_action": "booked"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I want to book for tomorrow",
+      "assistant": "What's bringing you in?",
+      "tool_calls": []
+    },
+    {
+      "user": "6pm works",
+      "assistant": "Could you tell me the reason for your visit?",
+      "tool_calls": []
+    },
+    {
+      "user": "My name is Aakanksha, spelled A-A-K-A-N-K-S-H-A, phone 9876543210",
+      "assistant": "May I know the reason for your appointment?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [
+      "check_availability",
+      "book_appointment"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

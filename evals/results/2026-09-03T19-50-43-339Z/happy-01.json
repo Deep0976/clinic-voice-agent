@@ -1,0 +1,31 @@
+{
+  "case": {
+    "id": "happy-01",
+    "category": "happy_path",
+    "description": "Simple evening booking",
+    "turns": [
+      "I want to book an appointment for tomorrow evening"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I want to book an appointment for tomorrow evening",
+      "error": {
+        "message": "Add a payment method to use chat. Pay-as-you-go orgs require a card on file.",
+        "reason": "payment_method_missing",
+        "statusCode": 402
+      }
+    }
+  ]
+}

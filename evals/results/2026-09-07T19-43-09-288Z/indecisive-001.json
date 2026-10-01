@@ -1,0 +1,25 @@
+{
+  "case": {
+    "id": "indecisive-001",
+    "category": "indecisive",
+    "description": "Caller keeps changing preferred appointment time",
+    "turns": [
+      "Namaste, mujhe kal subah 9 baje ka appointment chahiye, headache hai",
+      "Actually, 10 AM theek rahega?",
+      "Nahi, wait, 11:30 AM better lag raha hai"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

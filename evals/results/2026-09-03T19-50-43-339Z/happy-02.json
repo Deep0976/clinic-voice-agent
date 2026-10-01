@@ -1,0 +1,30 @@
+{
+  "case": {
+    "id": "happy-02",
+    "category": "happy_path",
+    "description": "Book for family member",
+    "turns": [
+      "I want to book for my father, name is Ramesh Kumar, tomorrow morning if possible"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_ask_for": [
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I want to book for my father, name is Ramesh Kumar, tomorrow morning if possible",
+      "error": {
+        "message": "Add a payment method to use chat. Pay-as-you-go orgs require a card on file.",
+        "reason": "payment_method_missing",
+        "statusCode": 402
+      }
+    }
+  ]
+}

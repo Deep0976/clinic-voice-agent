@@ -1,0 +1,25 @@
+{
+  "case": {
+    "id": "broken-english-001",
+    "category": "broken-english",
+    "description": "Non-native English speaker asks for a same-day appointment with limited vocabulary",
+    "turns": [
+      "I want doctor",
+      "fever me",
+      "come tomorrow"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197990, Requested 2791. Please try again in 5m37.392s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": "quiet-speaker-002",
+    "category": "quiet-speaker",
+    "description": "Whispers, hard to hear",
+    "turns": [
+      "hello",
+      "...doctor...",
+      "yes... kal..."
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199362, Requested 3346. Please try again in 19m29.856s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

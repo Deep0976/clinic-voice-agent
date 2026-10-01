@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": "ambiguous-emergency-001",
+    "category": "ambiguous-emergency",
+    "description": "Mild chest tightness with occasional dizziness and 2‑day headache, ambiguous urgency",
+    "turns": [
+      "Doctor sahab, mujhe chest me thoda tightness feel ho raha hai, kabhi kabhi dizziness hoti hai, aur do din se headache hai.",
+      "Yeh tightness bahut zyada nahi hai, sirf halki si, aur dizziness kabhi kabhi hoti hai, koi bahut tej pain nahi."
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

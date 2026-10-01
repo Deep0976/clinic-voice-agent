@@ -1,0 +1,32 @@
+{
+  "case": {
+    "id": "hinglish-01",
+    "category": "hinglish",
+    "description": "Full Hinglish booking",
+    "turns": [
+      "Bhaiya, kal shaam ka appointment chahiye Doctor ke saath"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Bhaiya, kal shaam ka appointment chahiye Doctor ke saath",
+      "assistant": "Bhaiya, kal shaam ka appointment chahiye, theek hai. Aapko kya problem hai?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [
+      "check_availability"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

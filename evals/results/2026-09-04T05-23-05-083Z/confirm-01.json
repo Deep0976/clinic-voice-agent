@@ -1,0 +1,25 @@
+{
+  "case": {
+    "id": "confirm-01",
+    "category": "confirmation",
+    "description": "Unusual name spelling",
+    "turns": [
+      "I want to book for tomorrow",
+      "6pm works",
+      "My name is Aakanksha, spelled A-A-K-A-N-K-S-H-A, phone 9876543210"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_confirm": [
+        "name spelled",
+        "phone repeated"
+      ],
+      "language": "en",
+      "final_action": "booked"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7662, Requested 703. Please try again in 2.7375s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

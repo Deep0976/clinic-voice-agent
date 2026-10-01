@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "off-hour-request-001",
+    "category": "off-hour-request",
+    "description": "Caller requests a slot at 9 PM, outside clinic hours",
+    "turns": [
+      "Namaste, mujhe aaj raat 9 baje doctor se milna hai, headache hai"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197701, Requested 2825. Please try again in 3m47.232s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

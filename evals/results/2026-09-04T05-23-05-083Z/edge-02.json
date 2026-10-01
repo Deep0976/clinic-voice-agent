@@ -1,0 +1,21 @@
+{
+  "case": {
+    "id": "edge-02",
+    "category": "no_slot",
+    "description": "Past date",
+    "turns": [
+      "I need appointment for yesterday please, missed the doctor"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_offer": [
+        "future slot"
+      ],
+      "language": "en",
+      "final_action": "offer_alternative"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7615, Requested 637. Please try again in 1.89s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

@@ -1,0 +1,17 @@
+{
+  "case": {
+    "id": "wrong-doctor-001",
+    "category": "wrong-doctor",
+    "description": "Caller asks for Dr. Sharma instead of Dr. Deep Agarwal",
+    "turns": [
+      "Namaste, uh, kya Dr. Sharma yahan hain? Mujhe unka appointment chahiye, please"
+    ],
+    "expect": {
+      "must_call": [],
+      "must_ask_for": [],
+      "language": "hinglish",
+      "final_action": "refuse"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

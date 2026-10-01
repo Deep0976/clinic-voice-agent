@@ -1,0 +1,47 @@
+{
+  "case": {
+    "id": "confirm-02",
+    "category": "confirmation",
+    "description": "Phone with country code",
+    "turns": [
+      "I want to book",
+      "Friday morning",
+      "Name is Rahul, number is plus nine one nine eight seven six five four three two one zero"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_confirm": [
+        "phone repeated in groups"
+      ],
+      "language": "en",
+      "final_action": "book_or_clarify"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I want to book",
+      "assistant": "What's bringing you in?",
+      "tool_calls": []
+    },
+    {
+      "user": "Friday morning",
+      "assistant": "Could you tell me the reason for your visit?",
+      "tool_calls": []
+    },
+    {
+      "user": "Name is Rahul, number is plus nine one nine eight seven six five four three two one zero",
+      "assistant": "Could you share the reason for your visit and confirm your 10‑digit phone number, please?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [
+      "check_availability"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

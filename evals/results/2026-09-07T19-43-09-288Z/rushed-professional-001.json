@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "rushed-professional-001",
+    "category": "rushed-professional",
+    "description": "Busy professional asks for a specific time slot with minimal conversation",
+    "turns": [
+      "Hello, I need a 3pm slot today for a fever, please."
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

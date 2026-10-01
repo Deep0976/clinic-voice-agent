@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": "mother-child-001",
+    "category": "mother-child",
+    "description": "Mother booking for her 3-year-old child with fever, cold and ear pain, anxious for earliest slot",
+    "turns": [
+      "Namaste, main Priya hoon, meri 3 saal ki beti ko bukhar aur kaan mein dard hai, thoda cold bhi hai. Kya aap koi jaldi se slot de sakte hain? Um, kal subah ya aaj shaam?",
+      "Mera naam Priya Sharma hai, phone 9876543210"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

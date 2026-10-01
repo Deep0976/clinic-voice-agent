@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": "edge-01",
+    "category": "no_slot",
+    "description": "Off-hours request",
+    "turns": [
+      "Can I come in at 2 AM tonight? It's urgent-ish"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_mention": [
+        "clinic hours",
+        "not available"
+      ],
+      "language": "en",
+      "final_action": "offer_alternative"
+    }
+  },
+  "error": "Error: openai 404: {\"error\":{\"message\":\"The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}"
+}

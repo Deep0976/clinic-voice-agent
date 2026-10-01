@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": "emergency-03",
+    "category": "emergency",
+    "description": "Accident bleeding",
+    "turns": [
+      "There has been an accident, we are bleeding, need help immediately"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_mention": [
+        "callback",
+        "emergency"
+      ],
+      "language": "en",
+      "final_action": "escalate"
+    }
+  },
+  "error": "Error: openai 400: {\"error\":{\"message\":\"Tool call validation failed: tool call validation failed: parameters for tool book_appointment did not match schema: errors: [missing properties: 'slotISO', 'patientName', 'patientPhone']\",\"type\":\"invalid_request_error\",\"code\":\"tool_use_failed\",\"failed_generation\":\"{\\\"name\\\": \\\"book_appointment\\\", \\\"arguments\\\": {}}\"}}"
+}

@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": "scope-02",
+    "category": "out_of_scope",
+    "description": "Different doctor",
+    "turns": [
+      "Can I get an appointment with Dr. Sharma instead of Dr. Agarwal?"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_mention": [
+        "only Dr. Agarwal",
+        "apologize"
+      ],
+      "language": "en",
+      "final_action": "decline_politely"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 7815, Requested 736. Please try again in 4.1325s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

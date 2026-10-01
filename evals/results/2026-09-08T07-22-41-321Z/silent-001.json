@@ -1,0 +1,19 @@
+{
+  "case": {
+    "id": "silent-001",
+    "category": "silent",
+    "description": "Barely responds, mostly silence",
+    "turns": [
+      "...",
+      "hmm",
+      "yes"
+    ],
+    "expect": {
+      "must_call": [],
+      "must_ask_for": [],
+      "language": "en",
+      "final_action": "end_call"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197438, Requested 3568. Please try again in 7m14.592s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

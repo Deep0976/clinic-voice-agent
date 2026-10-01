@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": "edge-01",
+    "category": "no_slot",
+    "description": "Off-hours request",
+    "turns": [
+      "Can I come in at 2 AM tonight? It's urgent-ish"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_mention": [
+        "clinic hours",
+        "not available"
+      ],
+      "language": "en",
+      "final_action": "offer_alternative"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

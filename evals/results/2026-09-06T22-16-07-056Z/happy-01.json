@@ -1,0 +1,36 @@
+{
+  "case": {
+    "id": "happy-01",
+    "category": "happy_path",
+    "description": "Simple evening booking",
+    "turns": [
+      "I want to book an appointment for tomorrow evening"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I want to book an appointment for tomorrow evening",
+      "assistant": "Sure, may I know what’s bringing you in?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [
+      "check_availability"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

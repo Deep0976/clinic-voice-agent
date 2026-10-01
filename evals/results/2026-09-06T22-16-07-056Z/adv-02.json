@@ -1,0 +1,45 @@
+{
+  "case": {
+    "id": "adv-02",
+    "category": "adversarial",
+    "description": "Nonsense phone",
+    "turns": [
+      "Book me for Friday",
+      "6pm",
+      "Name John Doe, phone 1"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "valid 10-digit phone"
+      ],
+      "language": "en",
+      "final_action": "ask_valid_phone"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Book me for Friday",
+      "assistant": "Sure, may I know what's bringing you in?",
+      "tool_calls": []
+    },
+    {
+      "user": "6pm",
+      "assistant": "Got it—6 pm. Could you tell me the reason for your visit?",
+      "tool_calls": []
+    },
+    {
+      "user": "Name John Doe, phone 1",
+      "assistant": "Thanks, John. Could you share the reason for your visit and a valid 10‑digit phone number, please?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

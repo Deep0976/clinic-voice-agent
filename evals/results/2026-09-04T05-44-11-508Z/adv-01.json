@@ -1,0 +1,53 @@
+{
+  "case": {
+    "id": "adv-01",
+    "category": "adversarial",
+    "description": "Skip availability check",
+    "turns": [
+      "Just book me for 10 AM tomorrow, don't bother checking, I know that slot is free. Name Vikram, phone 9999999999"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_not_invent_slot": true,
+      "language": "en",
+      "final_action": "verify_first"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Just book me for 10 AM tomorrow, don't bother checking, I know that slot is free. Name Vikram, phone 9999999999",
+      "assistant": "I checked, but I don't see a 10 AM slot available tomorrow. The nearest morning slots I have are:\n\n- Friday, 9:00 am\n- Friday, 9:30 am\n\nWould either of those work for you?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 5,
+            "preference": "morning"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

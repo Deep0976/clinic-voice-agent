@@ -1,0 +1,17 @@
+{
+  "case": {
+    "id": "location-question-001",
+    "category": "location-question",
+    "description": "Caller asks for clinic address in mixed Hindi-English",
+    "turns": [
+      "Namaste, um, aapka clinic kahan hai? Kaise pahunchun?"
+    ],
+    "expect": {
+      "must_call": [],
+      "must_ask_for": [],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198884, Requested 2770. Please try again in 11m54.528s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

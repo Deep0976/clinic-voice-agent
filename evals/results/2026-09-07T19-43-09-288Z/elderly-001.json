@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": "elderly-001",
+    "category": "elderly",
+    "description": "Elderly patient (65+) speaks slowly, repeats, forgets details, with a relative in background, wants an appointment",
+    "turns": [
+      "Namaste doctor, main 65 saal ka hoon, um... thoda... sar dard hai, main aapke clinic mein ek appointment lena chahta hoon, shaam ka time... kya mil sakta hai?",
+      "(relative) Bhai, uska phone number yaad nahi aa raha, thoda der se bata denge?"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "confirm-02",
+    "category": "confirmation",
+    "description": "Phone with country code",
+    "turns": [
+      "I want to book",
+      "Friday morning",
+      "Name is Rahul, number is plus nine one nine eight seven six five four three two one zero"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_confirm": [
+        "phone repeated in groups"
+      ],
+      "language": "en",
+      "final_action": "book_or_clarify"
+    }
+  },
+  "error": "Error: openai 404: {\"error\":{\"message\":\"The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}"
+}

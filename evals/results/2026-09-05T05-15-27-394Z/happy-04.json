@@ -1,0 +1,52 @@
+{
+  "case": {
+    "id": "happy-04",
+    "category": "happy_path",
+    "description": "Specific day request",
+    "turns": [
+      "Something on Saturday please, morning slot"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Something on Saturday please, morning slot",
+      "assistant": "I’m sorry, we don’t have any Saturday morning slots. The next available slots are:\n\n- Friday 5 Sept, 9:00 am  \n- Friday 5 Sept, 9:30 am  \n\nPlease let me know which one works for you.",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "morning"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

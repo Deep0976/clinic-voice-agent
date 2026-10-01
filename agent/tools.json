@@ -1,0 +1,75 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "check_availability",
+      "description": "Get the next available appointment slots at the clinic. Always call this before offering any time to the caller. Pass a preference when the caller has stated a time of day, and an urgency you inferred from their symptoms.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "How many slots to fetch. Default 3."
+          },
+          "preference": {
+            "type": "string",
+            "enum": ["morning", "afternoon", "evening", "any"],
+            "description": "Filter by time of day. morning = 9am-12pm, afternoon = 12pm-5pm, evening = 5pm-8pm. Use 'any' or omit if the caller has not stated a preference."
+          },
+          "urgency": {
+            "type": "string",
+            "enum": ["urgent", "normal", "routine"],
+            "description": "How soon they need to be seen. 'urgent' = fever/pain/infection, needs earliest available slot. 'normal' = persistent but stable symptoms, next few days. 'routine' = check-up or non-symptomatic, 2+ days out is fine. Default 'normal'."
+          }
+        }
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "request_callback",
+      "description": "Log a callback request when you cannot help the caller book (they need medical advice, want a refund, ask about something outside appointments, or the conversation is getting stuck). Confirms with a friendly line then the call ends. Do NOT use if the caller is actively trying to book an appointment.",
+      "parameters": {
+        "type": "object",
+        "required": ["patientPhone", "reason"],
+        "properties": {
+          "patientName": { "type": "string", "description": "Caller's name if they gave it. Optional." },
+          "patientPhone": { "type": "string", "description": "10-digit Indian phone number to call back on." },
+          "reason": { "type": "string", "description": "One short line: what the caller needed (e.g. 'wants refund', 'medical advice about diabetes', 'confused about the flow')." }
+        }
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "book_appointment",
+      "description": "Book a specific slot for a patient. Only call after confirming slot, name, and phone number. Pass the same urgency you decided from their symptoms.",
+      "parameters": {
+        "type": "object",
+        "required": ["slotISO", "patientName", "patientPhone"],
+        "properties": {
+          "slotISO": {
+            "type": "string",
+            "description": "The ISO timestamp of the slot, exactly as returned by check_availability."
+          },
+          "patientName": { "type": "string" },
+          "patientPhone": {
+            "type": "string",
+            "description": "10-digit Indian phone number."
+          },
+          "reason": {
+            "type": "string",
+            "description": "One short line on why they are coming in — their symptoms in their own words."
+          },
+          "urgency": {
+            "type": "string",
+            "enum": ["urgent", "normal", "routine"],
+            "description": "Same value passed to check_availability. Defaults to 'normal'."
+          }
+        }
+      }
+    }
+  }
+]

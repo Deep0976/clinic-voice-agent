@@ -1,0 +1,21 @@
+{
+  "case": {
+    "id": "edge-02",
+    "category": "no_slot",
+    "description": "Past date",
+    "turns": [
+      "I need appointment for yesterday please, missed the doctor"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_offer": [
+        "future slot"
+      ],
+      "language": "en",
+      "final_action": "offer_alternative"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

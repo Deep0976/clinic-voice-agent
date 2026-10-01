@@ -1,0 +1,22 @@
+{
+  "case": {
+    "id": "scope-02",
+    "category": "out_of_scope",
+    "description": "Different doctor",
+    "turns": [
+      "Can I get an appointment with Dr. Sharma instead of Dr. Agarwal?"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_mention": [
+        "only Dr. Agarwal",
+        "apologize"
+      ],
+      "language": "en",
+      "final_action": "decline_politely"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

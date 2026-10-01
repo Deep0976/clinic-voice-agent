@@ -1,0 +1,27 @@
+{
+  "case": {
+    "id": "phone-across-turns-002",
+    "category": "phone-across-turns",
+    "description": "Digits with pauses",
+    "turns": [
+      "Sneha",
+      "9 8",
+      "7 3",
+      "4 5 6",
+      "7 8 9 0"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199424, Requested 3552. Please try again in 21m25.632s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

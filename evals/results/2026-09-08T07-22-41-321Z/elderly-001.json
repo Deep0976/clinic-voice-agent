@@ -1,0 +1,98 @@
+{
+  "case": {
+    "id": "elderly-001",
+    "category": "elderly",
+    "description": "Elderly caller speaks slowly, mixes Hindi, forgets details",
+    "turns": [
+      "Beta, main... uh... doctor sahab se milna chahta hoon, ghutne mein dard hai... kaafi din se",
+      "Haan haan, kal shaam thik hai",
+      "Mera naam Ram Lal hai... phone number... arre ek minute... 9 8 7 6... haan 5 4 3 2 1 0"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Beta, main... uh... doctor sahab se milna chahta hoon, ghutne mein dard hai... kaafi din se",
+      "assistant": "Friday 5 Sept, 9 am, 9:30 am, or 12:30 pm. Which one works for you?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "any",
+            "urgency": "normal"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T07:00:00.000Z",
+                "human": "Fri, 5 Sept, 12:30 pm"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "user": "Haan haan, kal shaam thik hai",
+      "assistant": "We have Friday 5 Sept at 6 pm or 7 pm. Which one would you like?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "evening",
+            "urgency": "normal"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T12:30:00.000Z",
+                "human": "Fri, 5 Sept, 6:00 pm"
+              },
+              {
+                "slotISO": "2026-09-05T13:30:00.000Z",
+                "human": "Fri, 5 Sept, 7:00 pm"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "user": "Mera naam Ram Lal hai... phone number... arre ek minute... 9 8 7 6... haan 5 4 3 2 1 0",
+      "assistant": "Great, Ram Lal. Which time works for you—6 pm or 7 pm?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [
+    "check_availability",
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [
+      "book_appointment"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "case": {
+    "id": "past-date-002",
+    "category": "past-date",
+    "description": "2 AM request",
+    "turns": [
+      "Book me at 2 AM tonight, jaldi hai"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Book me at 2 AM tonight, jaldi hai",
+      "assistant": "Sorry, hum clinic sirf 9 AM se 8 PM tak hi khulte hain, 2 AM ka slot nahi hai. Aapka kya reason hai appointment ka?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [
+      "check_availability",
+      "book_appointment"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "case": {
+    "id": "happy-03",
+    "category": "happy_path",
+    "description": "Earliest possible",
+    "turns": [
+      "Kitna jaldi ho sakta hai appointment?"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Kitna jaldi ho sakta hai appointment?",
+      "assistant": "Aapko kya problem hai?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [
+      "check_availability"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "case": {
+    "id": "qa-lab-vaccine-001",
+    "category": "qa-lab-vaccine",
+    "description": "Asks about blood test",
+    "turns": [
+      "Do you do blood tests at the clinic?"
+    ],
+    "expect": {
+      "must_call": [],
+      "must_ask_for": [],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199486, Requested 3366. Please try again in 20m32.064s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

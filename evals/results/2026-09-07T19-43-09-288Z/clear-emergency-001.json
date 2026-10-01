@@ -1,0 +1,17 @@
+{
+  "case": {
+    "id": "clear-emergency-001",
+    "category": "clear-emergency",
+    "description": "Severe chest pain with sweating and breathlessness",
+    "turns": [
+      "Mujhe chest mein bahut tez dard ho raha hai, pasina aa raha hai, saans lene mein bahut dikkat ho rahi hai, um..."
+    ],
+    "expect": {
+      "must_call": [],
+      "must_ask_for": [],
+      "language": "hinglish",
+      "final_action": "escalate"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

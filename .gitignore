@@ -1,0 +1,8 @@
+node_modules/
+bookings.json
+bookings.test.json
+.env
+.wrangler/
+.dev.vars
+.env*
+.DS_Store

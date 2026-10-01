@@ -1,0 +1,32 @@
+{
+  "case": {
+    "id": "hinglish-03",
+    "category": "hindi",
+    "description": "Full Hindi request",
+    "turns": [
+      "Mujhe kal ka time chahiye Doctor Agarwal ke saath"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "language": "hindi_or_hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Mujhe kal ka time chahiye Doctor Agarwal ke saath",
+      "assistant": "Namaste, kal ka time chahiye, theek hai. Aapka aane ka reason kya hai?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [
+      "check_availability"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

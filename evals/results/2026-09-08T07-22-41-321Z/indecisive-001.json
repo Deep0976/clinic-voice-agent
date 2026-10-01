@@ -1,0 +1,26 @@
+{
+  "case": {
+    "id": "indecisive-001",
+    "category": "indecisive",
+    "description": "Caller keeps changing slot choice",
+    "turns": [
+      "Book me a morning slot, cough hai",
+      "Actually can I do afternoon instead?",
+      "Umm wait, 6pm is better. Yes 6pm",
+      "Rohit Kumar, 9876123450"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199658, Requested 3625. Please try again in 23m38.255999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

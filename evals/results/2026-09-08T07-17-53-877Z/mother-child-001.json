@@ -1,0 +1,24 @@
+{
+  "case": {
+    "id": "mother-child-001",
+    "category": "mother-child",
+    "description": "Anxious mother booking for feverish 3yr old",
+    "turns": [
+      "Hi, meri beti ko bahut tez fever hai, 2 saal ki hai, kya aaj hi ka slot mil sakta hai please?",
+      "Meri naam Priya Sharma hai, 9876543210, beti ka naam Anaya hai"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 400: {\"error\":{\"message\":\"Tool call validation failed: tool call validation failed: attempted to call tool 'endCall' which was not in request.tools\",\"type\":\"invalid_request_error\",\"code\":\"tool_use_failed\",\"failed_generation\":\"{\\\"name\\\": \\\"endCall\\\", \\\"arguments\\\": {}}\"}}"
+}

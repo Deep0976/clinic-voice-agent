@@ -1,0 +1,58 @@
+{
+  "case": {
+    "id": "edge-02",
+    "category": "no_slot",
+    "description": "Past date",
+    "turns": [
+      "I need appointment for yesterday please, missed the doctor"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_offer": [
+        "future slot"
+      ],
+      "language": "en",
+      "final_action": "offer_alternative"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I need appointment for yesterday please, missed the doctor",
+      "assistant": "I’m sorry, we can’t schedule for a past date. Here are the next available slots: Friday 5 Sept 9:00 am, Friday 5 Sept 9:30 am, or Friday 5 Sept 12:30 pm. Which one works for you?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T07:00:00.000Z",
+                "human": "Fri, 5 Sept, 12:30 pm"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

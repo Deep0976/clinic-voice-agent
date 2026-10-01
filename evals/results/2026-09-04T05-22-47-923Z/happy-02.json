@@ -1,0 +1,58 @@
+{
+  "case": {
+    "id": "happy-02",
+    "category": "happy_path",
+    "description": "Book for family member",
+    "turns": [
+      "I want to book for my father, name is Ramesh Kumar, tomorrow morning if possible"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_ask_for": [
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I want to book for my father, name is Ramesh Kumar, tomorrow morning if possible",
+      "assistant": "Good morning! I’ve checked the next slots. We have:\n\n- Friday 5 Sept, 9:00 am  \n- Friday 5 Sept, 9:30 am  \n- Friday 5 Sept, 6:00 pm  \n\nWhich one would you like to book for your father?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T12:30:00.000Z",
+                "human": "Fri, 5 Sept, 6:00 pm"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

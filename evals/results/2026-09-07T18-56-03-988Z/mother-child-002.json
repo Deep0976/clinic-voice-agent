@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "mother-child-002",
+    "category": "mother-child",
+    "description": "Mother books for her feverish child, wants earliest slot",
+    "turns": [
+      "Namaste, main apni chhoti beti ke liye, usko bukhar aur kaan ka dard hai, kya aapke paas sabse jaldi slot hai?"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199119, Requested 2581. Please try again in 12m14.4s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

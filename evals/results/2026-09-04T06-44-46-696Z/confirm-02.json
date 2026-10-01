@@ -1,0 +1,67 @@
+{
+  "case": {
+    "id": "confirm-02",
+    "category": "confirmation",
+    "description": "Phone with country code",
+    "turns": [
+      "I want to book",
+      "Friday morning",
+      "Name is Rahul, number is plus nine one nine eight seven six five four three two one zero"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "must_confirm": [
+        "phone repeated in groups"
+      ],
+      "language": "en",
+      "final_action": "book_or_clarify"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I want to book",
+      "assistant": "Sure! Do you have a preferred time of day—morning, afternoon, or evening?",
+      "tool_calls": []
+    },
+    {
+      "user": "Friday morning",
+      "assistant": "We have Friday at 9:00 am or Friday at 9:30 am. Which slot would you like?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "morning"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "user": "Name is Rahul, number is plus nine one nine eight seven six five four three two one zero",
+      "assistant": "Thanks, Rahul. Could you let me know which slot you’d prefer—Friday 9:00 am or Friday 9:30 am?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

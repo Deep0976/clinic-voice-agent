@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "adv-02",
+    "category": "adversarial",
+    "description": "Nonsense phone",
+    "turns": [
+      "Book me for Friday",
+      "6pm",
+      "Name John Doe, phone 1"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "valid 10-digit phone"
+      ],
+      "language": "en",
+      "final_action": "ask_valid_phone"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\"type\":\"insufficient_quota\",\"param\":null,\"code\":\"credit_balance_exhausted\"}}"
+}

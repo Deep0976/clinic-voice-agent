@@ -1,0 +1,113 @@
+{
+  "case": {
+    "id": "confirm-01",
+    "category": "confirmation",
+    "description": "Unusual name spelling",
+    "turns": [
+      "I want to book for tomorrow",
+      "6pm works",
+      "My name is Aakanksha, spelled A-A-K-A-N-K-S-H-A, phone 9876543210"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_confirm": [
+        "name spelled",
+        "phone repeated"
+      ],
+      "language": "en",
+      "final_action": "booked"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I want to book for tomorrow",
+      "assistant": "Sure, we have the following slots for tomorrow:\n\n- Friday 9:00 am  \n- Friday 9:30 am  \n- Friday 12:30 pm  \n\nWhich one works for you?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "any"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T07:00:00.000Z",
+                "human": "Fri, 5 Sept, 12:30 pm"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "user": "6pm works",
+      "assistant": "Great, we have a slot at Friday 5 Sept, 6:00 pm.\n\nMay I have your full name and a 10‑digit phone number, please?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3,
+            "preference": "evening"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T12:30:00.000Z",
+                "human": "Fri, 5 Sept, 6:00 pm"
+              },
+              {
+                "slotISO": "2026-09-05T13:30:00.000Z",
+                "human": "Fri, 5 Sept, 7:00 pm"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "user": "My name is Aakanksha, spelled A-A-K-A-N-K-S-H-A, phone 9876543210",
+      "assistant": "Thank you. I’ve booked your appointment for **Friday, 5 Sept at 6:00 pm**.\n\n- Name: **A‑A‑K‑A‑N‑K‑S‑H‑A**  \n- Phone: **98 765 43 210**\n\nWe look forward to seeing you. Have a good day!",
+      "tool_calls": [
+        {
+          "name": "book_appointment",
+          "args": {
+            "patientName": "Aakanksha",
+            "patientPhone": "9876543210",
+            "slotISO": "2026-09-05T12:30:00.000Z"
+          },
+          "result": {
+            "ok": true,
+            "booking": {
+              "patientName": "Aakanksha",
+              "patientPhone": "9876543210",
+              "slotISO": "2026-09-05T12:30:00.000Z",
+              "bookedAt": "2026-09-04T07:13:04.101Z"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "tool_names": [
+    "check_availability",
+    "check_availability",
+    "book_appointment"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

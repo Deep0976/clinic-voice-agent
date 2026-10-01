@@ -1,0 +1,23 @@
+{
+  "case": {
+    "id": "no-preference-001",
+    "category": "no-preference",
+    "description": "Caller says any time works, no preference",
+    "turns": [
+      "Namaste, main Dr. Deep Agarwal ke clinic me appointment lena chahta hoon, um, koi bhi time thik hai, aap decide karo"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197850, Requested 2819. Please try again in 4m49.008s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

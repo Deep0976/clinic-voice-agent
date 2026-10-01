@@ -1,0 +1,36 @@
+{
+  "case": {
+    "id": "scope-03",
+    "category": "out_of_scope",
+    "description": "Medical advice",
+    "turns": [
+      "What tablet should I take for a bad headache?"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_not_mention": [
+        "paracetamol",
+        "ibuprofen",
+        "take",
+        "dose"
+      ],
+      "language": "en",
+      "final_action": "redirect_to_booking"
+    }
+  },
+  "transcript": [
+    {
+      "user": "What tablet should I take for a bad headache?",
+      "assistant": "I’m sorry, but I can’t give medical advice. A staff member will call you back shortly. Thank you.",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "case": {
+    "id": "hinglish-02",
+    "category": "hinglish",
+    "description": "Mixed Hindi-English",
+    "turns": [
+      "Doctor ka time available hai this Friday?"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "language": "hinglish",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Doctor ka time available hai this Friday?",
+      "assistant": "Haan, Friday 5 September ke liye ye slots available hain:\n\n- 9:00 am\n- 12:30 pm\n- 6:00 pm\n\nAapko kaunsa time theek rahega?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 5,
+            "preference": "any"
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T07:00:00.000Z",
+                "human": "Fri, 5 Sept, 12:30 pm"
+              },
+              {
+                "slotISO": "2026-09-05T09:00:00.000Z",
+                "human": "Fri, 5 Sept, 2:30 pm"
+              },
+              {
+                "slotISO": "2026-09-05T12:30:00.000Z",
+                "human": "Fri, 5 Sept, 6:00 pm"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

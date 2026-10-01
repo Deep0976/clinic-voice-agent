@@ -1,0 +1,25 @@
+{
+  "case": {
+    "id": "wrong-phone-length-002",
+    "category": "wrong-phone-length",
+    "description": "Gives 11 digits",
+    "turns": [
+      "Book me morning cough",
+      "Anita",
+      "98765432109"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199128, Requested 3536. Please try again in 19m10.848s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

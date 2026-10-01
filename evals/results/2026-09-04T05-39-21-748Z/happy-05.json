@@ -1,0 +1,55 @@
+{
+  "case": {
+    "id": "happy-05",
+    "category": "happy_path",
+    "description": "Reason mentioned",
+    "turns": [
+      "I've had a cough for three days, I need to see the doctor sometime this week"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I've had a cough for three days, I need to see the doctor sometime this week",
+      "assistant": "Sure, we have a few slots available this week. You can choose from:\n\n- Friday 5 Sept at 9:00 am  \n- Friday 5 Sept at 9:30 am  \n- Friday 5 Sept at 12:30 pm  \n\nWhich one works best for you?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T07:00:00.000Z",
+                "human": "Fri, 5 Sept, 12:30 pm"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}

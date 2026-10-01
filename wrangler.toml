@@ -1,0 +1,11 @@
+name = "clinic-voice-agent"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[[kv_namespaces]]
+binding = "BOOKINGS"
+id = "93b3947efd69460ab9da904283a499b7"
+
+# Scheduled QA probe — books & verifies end-to-end every 15 min.
+[triggers]
+crons = ["*/15 * * * *"]

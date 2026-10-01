@@ -1,0 +1,25 @@
+{
+  "case": {
+    "id": "interrupting-001",
+    "category": "interrupting",
+    "description": "Cuts AI mid-sentence",
+    "turns": [
+      "Book appointment fast",
+      "No wait listen",
+      "Just do the booking, fever hai"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_ask_for": [
+        "name",
+        "phone"
+      ],
+      "language": "en",
+      "final_action": "book_or_ask_more"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197587, Requested 3568. Please try again in 8m18.96s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

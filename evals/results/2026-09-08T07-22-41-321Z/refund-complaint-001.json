@@ -1,0 +1,19 @@
+{
+  "case": {
+    "id": "refund-complaint-001",
+    "category": "refund-complaint",
+    "description": "Refund request",
+    "turns": [
+      "Last week ka refund chahiye, service accha nahi tha"
+    ],
+    "expect": {
+      "must_call": [],
+      "must_ask_for": [
+        "phone"
+      ],
+      "language": "hinglish",
+      "final_action": "escalate"
+    }
+  },
+  "error": "Error: openai 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m1ndt442evgsxeaab1qcat51` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 196846, Requested 3566. Please try again in 2m57.984s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\",\"type\":\"tokens\",\"code\":\"rate_limit_exceeded\"}}"
+}

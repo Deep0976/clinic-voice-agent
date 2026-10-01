@@ -1,0 +1,74 @@
+{
+  "case": {
+    "id": "confirm-01",
+    "category": "confirmation",
+    "description": "Unusual name spelling",
+    "turns": [
+      "I want to book for tomorrow",
+      "6pm works",
+      "My name is Aakanksha, spelled A-A-K-A-N-K-S-H-A, phone 9876543210"
+    ],
+    "expect": {
+      "must_call": [
+        "check_availability",
+        "book_appointment"
+      ],
+      "must_confirm": [
+        "name spelled",
+        "phone repeated"
+      ],
+      "language": "en",
+      "final_action": "booked"
+    }
+  },
+  "transcript": [
+    {
+      "user": "I want to book for tomorrow",
+      "assistant": "Sure, I have the following slots for tomorrow:\n\n- Friday 5 Sept, 9:00 am  \n- Friday 5 Sept, 9:30 am  \n- Friday 5 Sept, 12:30 pm  \n\nWhich one works for you?",
+      "tool_calls": [
+        {
+          "name": "check_availability",
+          "args": {
+            "count": 3
+          },
+          "result": {
+            "slots": [
+              {
+                "slotISO": "2026-09-05T03:30:00.000Z",
+                "human": "Fri, 5 Sept, 9:00 am"
+              },
+              {
+                "slotISO": "2026-09-05T04:00:00.000Z",
+                "human": "Fri, 5 Sept, 9:30 am"
+              },
+              {
+                "slotISO": "2026-09-05T07:00:00.000Z",
+                "human": "Fri, 5 Sept, 12:30 pm"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "user": "6pm works",
+      "assistant": "I’m sorry, we don’t have a 6 pm slot tomorrow. The nearest available times are:\n\n- Friday 5 Sept, 9:00 am  \n- Friday 5 Sept, 9:30 am  \n- Friday 5 Sept, 12:30 pm  \n\nPlease let me know which one you’d like to book.",
+      "tool_calls": []
+    },
+    {
+      "user": "My name is Aakanksha, spelled A-A-K-A-N-K-S-H-A, phone 9876543210",
+      "assistant": "Thank you, Aakanksha. Which of these slots would you like to confirm?\n\n- Friday 5 Sept, 9:00 am  \n- Friday 5 Sept, 9:30 am  \n- Friday 5 Sept, 12:30 pm  ",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [
+    "check_availability"
+  ],
+  "grade": {
+    "missing": [
+      "book_appointment"
+    ],
+    "forbidden": [],
+    "ok": false
+  }
+}

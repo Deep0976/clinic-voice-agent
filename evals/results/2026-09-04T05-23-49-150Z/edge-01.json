@@ -1,0 +1,34 @@
+{
+  "case": {
+    "id": "edge-01",
+    "category": "no_slot",
+    "description": "Off-hours request",
+    "turns": [
+      "Can I come in at 2 AM tonight? It's urgent-ish"
+    ],
+    "expect": {
+      "must_not_call": [
+        "book_appointment"
+      ],
+      "must_mention": [
+        "clinic hours",
+        "not available"
+      ],
+      "language": "en",
+      "final_action": "offer_alternative"
+    }
+  },
+  "transcript": [
+    {
+      "user": "Can I come in at 2 AM tonight? It's urgent-ish",
+      "assistant": "I’m sorry, but we can’t schedule a 2 AM appointment. A staff member will call you back shortly. May I have your name and a 10‑digit phone number, please?",
+      "tool_calls": []
+    }
+  ],
+  "tool_names": [],
+  "grade": {
+    "missing": [],
+    "forbidden": [],
+    "ok": true
+  }
+}
