@@ -112,9 +112,9 @@ VAPI_KEY=... node vapi_sync.mjs           # sync prompt and tools to Vapi
 
 ## Tech stack
 
-**Voice:** Vapi · LLM tool calling
-**Backend:** Cloudflare Workers · Workers KV · Cron Triggers · Turnstile
-**Integrations:** Google Calendar API (service account) · ICS feed · CSV export
+**Voice:** Vapi · LLM tool calling<br/>
+**Backend:** Cloudflare Workers · Workers KV · Cron Triggers · Turnstile<br/>
+**Integrations:** Google Calendar API (service account) · ICS feed · CSV export<br/>
 **Quality:** a custom eval runner with a scoring rubric
 
 ---
