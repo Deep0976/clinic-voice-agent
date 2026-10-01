@@ -1,39 +1,91 @@
-# Clinic Voice Agent: an AI receptionist that answers when nobody else can
+<div align="center">
 
-Small clinics in India lose patients every time the phone rings and nobody picks up. This project is a voice AI receptionist. It answers the clinic's phone in **Hindi, English or Hinglish**, collects the patient's details and preferred time, and **books the appointment straight into Google Calendar**. When a call needs a human, it hands the caller to staff instead of guessing.
+# 🩺 Clinic Voice Agent
 
-## What a call looks like
+**An AI receptionist that answers the clinic phone in Hindi, English or Hinglish and books the appointment straight into Google Calendar.**
 
-1. The patient calls. The agent replies in the same language the patient speaks.
-2. It checks real availability in 30-minute slots, grouped as morning, afternoon or evening.
-3. It confirms the patient's name, phone number and reason, then books the slot.
-4. The booking appears on the clinic's Google Calendar and the staff dashboard.
+![Vapi](https://img.shields.io/badge/Voice-Vapi-5B21B6)
+![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare&logoColor=white)
+![Google Calendar](https://img.shields.io/badge/Google%20Calendar-API-4285F4?logo=googlecalendar&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white)
+![Evals](https://img.shields.io/badge/evals-82%20cases-blue)
+![Languages](https://img.shields.io/badge/languages-Hindi%20%7C%20English%20%7C%20Hinglish-orange)
+
+<img src="docs/screenshots/booking-page.png" width="85%" alt="Patient booking page" />
+
+<sub>The patient booking page. Patients can talk to the AI receptionist or pick a slot themselves.</sub>
+
+</div>
+
+---
+
+## The problem
+
+Small clinics in India lose patients every time the phone rings and nobody is free to pick up. A missed call usually means a lost booking.
+
+## The solution
+
+A voice agent answers every call, any time of day. It speaks the caller's language, checks real availability, and books the slot. It knows when **not** to act on its own: emergencies get sent to 108, and tricky requests go to staff as a callback.
+
+## How a call works
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor P as Patient
+    participant V as Vapi voice agent
+    participant W as Cloudflare Worker
+    participant C as Google Calendar
+    actor S as Clinic staff
+
+    P->>V: "Kal shaam ka appointment chahiye"
+    V->>W: check_availability (evening)
+    W-->>V: 5:00 PM · 5:30 PM · 6:00 PM
+    V->>P: Offers slots in Hinglish
+    P->>V: Name, phone, reason, picks 5:30
+    V->>W: book_appointment
+    W->>C: Create event
+    W-->>V: Confirmed
+    V->>P: "Aapka appointment confirm ho gaya"
+    Note over V,S: Refunds, complaints or medical advice
+    V->>W: request_callback
+    W-->>S: Shows on the staff dashboard
+```
 
 ## Product decisions
 
 | Decision | Why |
 |---|---|
-| **Emergencies are never booked** | Chest pain, breathing trouble and similar cases get told to dial 108 straight away, and staff are flagged to call back. A plain "fever" is not treated as an emergency, so the agent doesn't over-escalate. |
-| **Human-in-the-loop callbacks** | Refunds, complaints, medical advice, or a caller who stays stuck all become a callback request for staff, instead of a made-up answer. |
-| **Language mirroring** | The agent answers in the caller's own register: pure English, Hinglish or Hindi. |
-| **A self-booking web page as a second channel** | Patients can also book from a QR code at the front desk. Cloudflare Turnstile blocks bots. |
-| **Always-on QA probe** | A scheduled job books a test slot every 15 minutes and checks that it really reached the calendar. |
+| 🚑 **Never book emergencies** | Chest pain, breathing trouble and similar cases are told to dial 108 straight away, and staff are flagged. A plain "fever" isn't escalated, so the agent doesn't over-react. |
+| 🙋 **Human in the loop** | Refunds, complaints, medical advice, or a caller who stays stuck all become a staff callback, never a made-up answer. |
+| 🗣️ **Language mirroring** | The agent replies in the caller's own register: English, Hinglish or Hindi. |
+| 📱 **Second channel** | A self-booking web page with a printable QR code for the front desk. Cloudflare Turnstile blocks bots. |
+| ✅ **Always-on QA** | A scheduled probe books a test slot every 15 minutes and checks that it really reached the calendar. |
 
 ## Evals
 
-Agent quality is measured, not eyeballed. [`evals/`](evals/) holds **82 test conversations** across 43 categories, such as elderly callers, anxious parents, Hinglish, quiet speakers, people who interrupt, ambiguous emergencies and refund complaints. Each run replays the conversations against the same prompt and tools that the live agent uses, then scores them against a [rubric](evals/rubric.md).
+The agent's quality is measured, not eyeballed. [`evals/`](evals/) holds **82 test conversations across 43 categories**, for example:
+
+> elderly callers · anxious parents · Hinglish · quiet speakers · interruptions · ambiguous vs clear emergencies · refund complaints · wrong phone lengths · fee and timing questions
+
+Each run replays the conversations against the **same prompt and tools the live agent uses**, then scores them against a [rubric](evals/rubric.md).
+
+```bash
+OPENAI_KEY=... node evals/run.mjs            # full suite
+OPENAI_KEY=... node evals/run.mjs --limit 5  # quick smoke test
+```
 
 ## Architecture
 
-```
-Caller ──► Vapi (speech-to-text, LLM, text-to-speech)
-              │  tool calls: check_availability · book_appointment · request_callback
-              ▼
-        Cloudflare Worker (worker.js)
-              ├── Workers KV ............ bookings
-              ├── Google Calendar API ... service-account sync
-              ├── Staff dashboard ....... bookings, calls, recordings, callbacks, CSV/ICS export
-              └── Patient page + QR ..... self-booking, protected by Turnstile
+```mermaid
+flowchart LR
+    Caller((📞 Caller)) --> Vapi[Vapi<br/>STT · LLM · TTS]
+    Web((🌐 Patient page<br/>+ QR)) --> W
+    Vapi -- tool calls --> W[Cloudflare Worker]
+    W --> KV[(Workers KV<br/>bookings)]
+    W --> GC[Google Calendar API]
+    W --> D[Staff dashboard<br/>bookings · calls · recordings<br/>callbacks · CSV / ICS]
+    Cron[⏱️ QA probe<br/>every 15 min] --> W
 ```
 
 | File | What it is |
@@ -44,16 +96,29 @@ Caller ──► Vapi (speech-to-text, LLM, text-to-speech)
 | `evals/` | Test conversations, runner, rubric and past results |
 | `server.js` | The first local Express prototype, see [README.local-dev.md](README.local-dev.md) |
 
-## Run it
+## Getting started
 
 ```bash
+git clone https://github.com/Deep0976/clinic-voice-agent.git
+cd clinic-voice-agent
 npm install
-npx wrangler secret put DASHBOARD_TOKEN    # also VAPI_KEY, GCAL_SA_JSON, CALENDAR_ID, TURNSTILE_SECRET
+
+# Secrets live in Cloudflare, never in the repo
+npx wrangler secret put DASHBOARD_TOKEN   # also VAPI_KEY, GCAL_SA_JSON, CALENDAR_ID, TURNSTILE_SECRET
 npx wrangler deploy
-VAPI_KEY=... node vapi_sync.mjs            # sync prompt and tools to Vapi
-OPENAI_KEY=... node evals/run.mjs          # run the eval suite
+
+VAPI_KEY=... node vapi_sync.mjs           # sync prompt and tools to Vapi
 ```
 
-No secrets live in this repo. They're all set with `wrangler secret`.
+## Tech stack
 
-**Stack:** Vapi · LLM tool calling · Cloudflare Workers + KV · Google Calendar API · Cloudflare Turnstile · Node.js
+**Voice:** Vapi · LLM tool calling
+**Backend:** Cloudflare Workers · Workers KV · Cron Triggers · Turnstile
+**Integrations:** Google Calendar API (service account) · ICS feed · CSV export
+**Quality:** a custom eval runner with a scoring rubric
+
+---
+
+<div align="center">
+Built by <a href="https://github.com/Deep0976">Deep Agarwal</a>
+</div>
